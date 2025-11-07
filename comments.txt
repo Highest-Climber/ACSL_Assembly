@@ -1,0 +1,6 @@
+A DC 5 This is a comment?
+LOAD A Let's hope there are no errors!
+ADD A
+STORE A
+PRINT A
+END What about here?

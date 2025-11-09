@@ -15,12 +15,6 @@ def isnum(string):
         return True
     return False
 
-def check_acc(acc):
-    if acc == None:
-        sys.stdout.write("Error: ACC has value of NULL.\n")
-        return True
-    return False
-
 def value(variables, loc):
     if loc[0] == "=":
         if not isnum(loc[1:]):
@@ -43,7 +37,7 @@ def run(commands):
     opcodes = {"LOAD", "STORE", "ADD", "SUB", "MULT", "DIV", "BE", "BG", "BL", "BU", "END", "READ", "PRINT", "DC"}
     variables = {}
     labels = {}
-    acc = None
+    acc = 0
     for i in range(len(commands)):
         if commands[i][0] not in opcodes and commands[i][1] != "DC":
             labels[commands[i][0]] = i
@@ -74,33 +68,23 @@ def run(commands):
                 return
             acc = loc_value
         elif opcode == "STORE":
-            if check_acc(acc):
-                return
             variables[loc] = acc
         elif opcode == "ADD":
-            if check_acc(acc):
-                return
             loc_value = value(variables, loc)
             if loc_value == None:
                 return
             acc = mod(acc + loc_value)
         elif opcode == "SUB":
-            if check_acc(acc):
-                return
             loc_value = value(variables, loc)
             if loc_value == None:
                 return
             acc = mod(acc - loc_value)
         elif opcode == "MULT":
-            if check_acc(acc):
-                return
             loc_value = value(variables, loc)
             if loc_value == None:
                 return
             acc = mod(acc * loc_value)
         elif opcode == "DIV":
-            if check_acc(acc):
-                return
             loc_value = value(variables, loc)
             if loc_value == None:
                 return
@@ -109,24 +93,18 @@ def run(commands):
                 return
             acc //= loc_value
         elif opcode == "BE":
-            if check_acc(acc):
-                return
             if acc == 0:
                 i = instruction_index(labels, loc)
                 if i == None:
                     return
                 continue
         elif opcode == "BG":
-            if check_acc(acc):
-                return
             if acc > 0:
                 i = instruction_index(labels, loc)
                 if i == None:
                     return
                 continue
         elif opcode == "BL":
-            if check_acc(acc):
-                return
             if acc < 0:
                 i = instruction_index(labels, loc)
                 if i == None:

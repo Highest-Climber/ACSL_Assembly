@@ -1,6 +1,6 @@
-A DC 5 This is a comment?
-LOAD A Let's hope there are no errors!
+A DC 5 This is a comment!
+LOAD A Anything after each line of code is considered a comment.
 ADD A
 STORE A
 PRINT A
-END What about here?
+END Comments work anywhere!

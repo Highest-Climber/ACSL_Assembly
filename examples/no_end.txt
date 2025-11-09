@@ -1,2 +1,2 @@
 A DC 5
-PRINT A
+PRINT A This program will never end since the END instruction was never given.

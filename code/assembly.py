@@ -20,12 +20,12 @@ def value(variables, loc):
         if not isnum(loc[1:]):
             sys.stdout.write("Error: LOC is not an integer.\n")
             return None
-        res = mod(int(loc[1:]))
+        res = int(loc[1:])
     elif loc not in variables:
         sys.stdout.write("Error: LOC is not defined.\n")
         return None
     else:
-        res = mod(variables[loc])
+        res = variables[loc]
     return res
 
 def instruction_index(labels, loc):
@@ -53,7 +53,7 @@ def run(commands):
                 if not isnum(commands[i][2]):
                     sys.stdout.write("Error: LOC is not an integer.\n")
                     return
-                variables[commands[i][0]] = mod(int(commands[i][2]))
+                variables[commands[i][0]] = int(commands[i][2])
                 i += 1
                 continue
             else:
